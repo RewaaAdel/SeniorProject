@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            //crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                 child: Image.asset(
-                  'Assets/logo.png',
+                  'Assets/logo2.png',
                   height: 200,
                 ),
               ),
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                color: Colors.grey,
+                color: Colors.black,
                 width: 150,
                 child: TextButton(
                   child: Text(
