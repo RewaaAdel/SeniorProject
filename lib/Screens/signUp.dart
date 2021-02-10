@@ -1,12 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/signUp.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class signUp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,8 +30,17 @@ class MyApp extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   child: TextField(
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(), labelText: "E-mail"),
+                        border: OutlineInputBorder(), labelText: "Name"),
                   )),
+              Container(
+                width: 300,
+                height: 40,
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), labelText: "E-mail")),
+              ),
+              Container(),
               Container(
                 width: 300,
                 height: 40,
@@ -51,12 +55,10 @@ class MyApp extends StatelessWidget {
                 width: 150,
                 child: TextButton(
                   child: Text(
-                    "Sign in",
+                    "Sign up",
                     style: TextStyle(fontSize: 15, color: Colors.white),
                   ),
-                  onPressed: () {
-                    runApp(signUp());
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
