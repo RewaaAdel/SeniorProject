@@ -40,17 +40,23 @@ class signUp extends StatelessWidget {
                       decoration: InputDecoration(
                           border: OutlineInputBorder(), labelText: "E-mail")),
                 ),
-                new DropdownButton<String>(
-                  items:
-                      <String>['Academic Staff', 'Student'].map((String value) {
-                    return new DropdownMenuItem<String>(
-                      value: value,
-                      child: new Text(
-                        value,
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (_) {},
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  width: 300,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  child: DropdownButton<String>(
+                    hint: Text("Organization"),
+                    items: <String>['Academic Staff', 'Student']
+                        .map((String value) {
+                      return new DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                          ));
+                    }).toList(),
+                    onChanged: (_) {},
+                  ),
                 ),
                 Container(
                   width: 300,
