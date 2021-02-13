@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
               Container(
                 margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                 child: Image.asset(
-                  'Assets/logo2.png',
+                  'Assets/logowithname.png',
                   height: 200,
                 ),
               ),
@@ -46,14 +47,31 @@ class MyApp extends StatelessWidget {
                         border: OutlineInputBorder(), labelText: "Password")),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
                 color: Colors.grey,
                 width: 150,
                 child: TextButton(
                   child: Text(
                     "Sign in",
-                    style: TextStyle(fontSize: 15, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                    ),
                   ),
+                  onPressed: () {
+                    runApp(homePageAdministrator());
+                  },
+                ),
+              ),
+              Container(
+                child: Text("You don't hava an account, ",
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                    )),
+              ),
+              Container(
+                child: TextButton(
+                  child: Text("Sign up"),
                   onPressed: () {
                     runApp(signUp());
                   },
