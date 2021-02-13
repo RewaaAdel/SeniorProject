@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AttendancePageStudent.dart';
+import 'package:tester/Screens/homePageStudent.dart';
 import 'package:tester/Screens/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 
@@ -59,15 +61,10 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    runApp(homePageAdministrator());
+                    runApp(HomePageStudent());
+                    //Navigator.of(context).popAndPushNamed('Attendance');
                   },
                 ),
-              ),
-              Container(
-                child: Text("You don't hava an account, ",
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                    )),
               ),
               Container(
                 child: TextButton(
