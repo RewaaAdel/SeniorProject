@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/signUp.dart';
+import 'package:tester/Screens/Administrator/signUp.dart';
 
 class homePageAdministrator extends StatelessWidget {
   // This widget is the root of your application.
