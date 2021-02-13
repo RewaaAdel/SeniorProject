@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:tester/Screens/homepage_administrator.dart';
+import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/main.dart';
 
 class signUp extends StatelessWidget {
