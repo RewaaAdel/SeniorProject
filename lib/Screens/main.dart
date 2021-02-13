@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
-import 'package:tester/Screens/Administrator/signUp.dart';
+import 'package:tester/Screens/signUp.dart';
 
 void main() {
   runApp(MyApp());
