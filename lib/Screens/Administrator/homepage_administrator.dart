@@ -37,47 +37,47 @@ class homePageAdministrator extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                  color: Colors.grey,
-                  width: 300,
-                  child: TextButton(
-                    child: Text(
-                      "Courses",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      runApp(homePageAdministrator());
-                    },
-                  ),
-                ),
+                    width: 300,
+                    height: 60,
+                    margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    child: RaisedButton(
+                      color: Colors.grey[500],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Text(
+                        " Courses",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      onPressed: () {},
+                    )),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                  color: Colors.grey,
-                  width: 300,
-                  child: TextButton(
-                    child: Text(
-                      "Evaluation Forms",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      runApp(homePageAdministrator());
-                    },
-                  ),
-                ),
+                    width: 300,
+                    height: 60,
+                    margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    child: RaisedButton(
+                      color: Colors.grey[500],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Text(
+                        " Evaluation Forms",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      onPressed: () {},
+                    )),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                  color: Colors.grey,
-                  width: 300,
-                  child: TextButton(
-                    child: Text(
-                      "Schedules",
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      runApp(homePageAdministrator());
-                    },
-                  ),
-                )
+                    width: 300,
+                    height: 60,
+                    margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    child: RaisedButton(
+                      color: Colors.grey[500],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Text(
+                        " Schedules",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      onPressed: () {},
+                    )),
               ])),
     );
   }

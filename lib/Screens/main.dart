@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/homePageStudent.dart';
 import 'package:tester/Screens/signUp.dart';
 
 void main() {
@@ -46,22 +47,26 @@ class MyApp extends StatelessWidget {
                         border: OutlineInputBorder(), labelText: "Password")),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                color: Colors.grey,
-                width: 150,
-                child: TextButton(
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
+                  width: 150,
+                  height: 40,
+                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  child: RaisedButton(
+                    color: Colors.grey[500],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6))),
+                    child: Text(
+                      " Sign in",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
-                  ),
-                  onPressed: () {
-                    runApp(HomePageStudent());
-                    //Navigator.of(context).popAndPushNamed('Attendance');
-                  },
-                ),
+                    onPressed: () {
+                      runApp(HomePageStudent());
+                    },
+                  )),
+              Container(
+                child: Text("I don\'t hava an account",
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                    )),
               ),
               Container(
                 child: TextButton(
