@@ -15,15 +15,13 @@ class homePageAdministrator extends StatelessWidget {
       home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            actions: [
-              IconButton(
-                icon: Icon(Icons.list),
-                onPressed: () {},
-                color: Colors.grey,
-                iconSize: 35,
-                padding: EdgeInsets.all(12),
-              ),
-            ],
+            leading: IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {},
+              color: Colors.grey,
+              iconSize: 35,
+              padding: EdgeInsets.all(12),
+            ),
             backgroundColor: Colors.white,
             elevation: 0,
           ),
