@@ -41,7 +41,7 @@ class homePageAdministrator extends StatelessWidget {
                     height: 60,
                     margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
                     child: RaisedButton(
-                      color: Colors.grey[500],
+                      color: Color(0xFF98D1D4),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Text(
@@ -55,7 +55,7 @@ class homePageAdministrator extends StatelessWidget {
                     height: 60,
                     margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
                     child: RaisedButton(
-                      color: Colors.grey[500],
+                      color: Color(0xFF98D1D4),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Text(
@@ -69,7 +69,7 @@ class homePageAdministrator extends StatelessWidget {
                     height: 60,
                     margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
                     child: RaisedButton(
-                      color: Colors.grey[500],
+                      color: Color(0xFF98D1D4),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Text(
