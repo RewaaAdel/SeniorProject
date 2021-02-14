@@ -96,19 +96,24 @@ class signUp extends StatelessWidget {
                       },
                     )),
                 Container(
-                  child: Text("I already hava an account",
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                      )),
-                ),
-                Container(
-                  child: TextButton(
-                    child: Text("Sign in"),
-                    onPressed: () {
-                      runApp(MyApp());
-                    },
-                  ),
-                )
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                      Container(
+                        child: Text(
+                          "I already have an account,",
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                      Container(
+                        child: TextButton(
+                          child: Text("Sign in"),
+                          onPressed: () {
+                            runApp(MyApp());
+                          },
+                        ),
+                      )
+                    ]))
               ],
             )));
   }

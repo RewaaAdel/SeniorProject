@@ -47,9 +47,17 @@ class MyApp extends StatelessWidget {
                         border: OutlineInputBorder(), labelText: "Password")),
               ),
               Container(
+                child: TextButton(
+                  child: Text("Forget my password"),
+                  onPressed: () {
+                    runApp(signUp());
+                  },
+                ),
+              ),
+              Container(
                   width: 150,
                   height: 40,
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
                   child: RaisedButton(
                     color: Color(0xFF98D1D4),
                     shape: RoundedRectangleBorder(
@@ -63,19 +71,24 @@ class MyApp extends StatelessWidget {
                     },
                   )),
               Container(
-                child: Text("I don\'t hava an account",
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                    )),
-              ),
-              Container(
-                child: TextButton(
-                  child: Text("Sign up"),
-                  onPressed: () {
-                    runApp(signUp());
-                  },
-                ),
-              )
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Container(
+                      child: Text(
+                        "I don\' have an account,",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Container(
+                      child: TextButton(
+                        child: Text("Sign up"),
+                        onPressed: () {
+                          runApp(signUp());
+                        },
+                      ),
+                    )
+                  ]))
             ],
           )),
     );

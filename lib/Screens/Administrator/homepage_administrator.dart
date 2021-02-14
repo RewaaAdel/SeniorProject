@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/signUp.dart';
+import 'package:tester/Screens/Administrator/CourseAdmin.dart';
+import 'package:tester/Screens/Administrator/EFAdmin.dart';
+import 'package:tester/Screens/Administrator/SchedulesAdmin.dart';
+import 'package:tester/Screens/profile.dart';
 
 class homePageAdministrator extends StatelessWidget {
   // This widget is the root of your application.
@@ -48,7 +51,9 @@ class homePageAdministrator extends StatelessWidget {
                         " Courses",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        runApp(CourseAdmin());
+                      },
                     )),
                 Container(
                     width: 300,
@@ -62,7 +67,9 @@ class homePageAdministrator extends StatelessWidget {
                         " Evaluation Forms",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        runApp(EFAdmin());
+                      },
                     )),
                 Container(
                     width: 300,
@@ -76,7 +83,9 @@ class homePageAdministrator extends StatelessWidget {
                         " Schedules",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        runApp(SchedulesAdmin());
+                      },
                     )),
               ])),
     );
