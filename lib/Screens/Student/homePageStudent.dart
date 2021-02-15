@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AttendancePageStudent.dart';
-import 'package:tester/Screens/CoursePageStudent.dart';
-import 'package:tester/Screens/QRCodePageStudent.dart';
+import 'package:tester/Screens/Student/AttendancePageStudent.dart';
+import 'package:tester/Screens/Student/CoursePageStudent.dart';
+import 'package:tester/Screens/Student/QRCodePageStudent.dart';
 
 class HomePageStudent extends StatelessWidget {
   @override
