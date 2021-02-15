@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Student/homePageStudent.dart';
 import 'package:tester/Screens/signUp.dart';
 
 void main() {
@@ -47,31 +46,48 @@ class MyApp extends StatelessWidget {
                         border: OutlineInputBorder(), labelText: "Password")),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-                color: Colors.grey,
-                width: 150,
                 child: TextButton(
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    runApp(HomePageStudent());
-                    //Navigator.of(context).popAndPushNamed('Attendance');
-                  },
-                ),
-              ),
-              Container(
-                child: TextButton(
-                  child: Text("Sign up"),
+                  child: Text("Forget my password"),
                   onPressed: () {
                     runApp(signUp());
                   },
                 ),
-              )
+              ),
+              Container(
+                  width: 150,
+                  height: 40,
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                  child: RaisedButton(
+                    color: Color(0xFF98D1D4),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6))),
+                    child: Text(
+                      " Sign in",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                    onPressed: () {
+                      runApp(HomePageStudent());
+                    },
+                  )),
+              Container(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Container(
+                      child: Text(
+                        "I don\' have an account,",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Container(
+                      child: TextButton(
+                        child: Text("Sign up"),
+                        onPressed: () {
+                          runApp(signUp());
+                        },
+                      ),
+                    )
+                  ]))
             ],
           )),
     );
