@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/homePageStudent.dart';
 import 'package:tester/Screens/signUp.dart';
 
 void main() {

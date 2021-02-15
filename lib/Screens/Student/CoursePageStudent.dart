@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/homePageStudent.dart';
+import 'package:tester/Screens/Student/homePageStudent.dart';
 
 class CoursPageStudent extends StatelessWidget {
   @override
@@ -49,37 +49,18 @@ class CoursPageStudent extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: Center(
                         child: Text(
-                          " Downloading ",
+                          " Back ",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                           ),
                         ),
                       ),
-                      onPressed: () {},
-                    ))
-                  ])),
-              Container(
-                height: 50,
-                width: 150,
-                //margin: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                child: Column(
-                  children: [
-                    RaisedButton(
-                      color: Colors.cyan[500],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(
-                        " Back",
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
                       onPressed: () {
                         runApp(HomePageStudent());
                       },
-                    )
-                  ],
-                ),
-              )
+                    ))
+                  ])),
             ])));
   }
 }
