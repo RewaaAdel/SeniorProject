@@ -33,9 +33,10 @@ class Profile extends StatelessWidget {
                 padding: EdgeInsets.only(left: 20),
               ),
             ),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            body: ListView(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
+
               children: [
                 Container(
                   child: Row(
@@ -51,6 +52,7 @@ class Profile extends StatelessWidget {
                         color: Color(0xFF98D1D4),
                       ),
                       Container(
+                        alignment: Alignment.centerRight,
                         child: Text(
                           "Ahmad Mohammed",
                           style:
