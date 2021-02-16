@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/style.dart';
 
-class CourseAS extends StatelessWidget {
+class ReportAS extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return ReportASState();
+  }
+}
+
+class ReportASState extends State<ReportAS> with NavigationStates {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,34 +25,35 @@ class CourseAS extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
-              "Courses",
+              //take the name of the evalauation form from the database
+              "Report",
               style: TextStyle(
                 fontSize: 30,
                 color: Color(0xFF525151),
               ),
             ),
-            /*leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  runApp(homePageAdministrator());
-                },
-                color: Color(0xFF525151),
-                iconSize: 20,
-                padding: EdgeInsets.only(left: 20),
-              ),*/
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                runApp(homepageAS());
+              },
+              color: Color(0xFF525151),
+              iconSize: 20,
+              padding: EdgeInsets.only(left: 20),
+            ),
           ),
-          body: Column(
-            //crossAxisAlignment: CrossAxisAlignment.center,
+          body: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(alignment: Alignment.center),
-              CoursesButtons(
-                label: "OMR 312",
-                color: Color(0xFF92D050), //onpressed: runApp(homepageAS());
+              Align(
+                alignment: Alignment.bottomCenter,
               ),
-              CoursesButtons(label: "OMR 511", color: Color(0xFFC697F6)),
-              CoursesButtons(label: "OMR 611", color: Color(0xFFB4C6E7)),
-              CoursesButtons(label: "SURD 401", color: Color(0xFFF6CAAC))
+              SubmitButtons(
+                text: "Export",
+              ),
+              SubmitButtons(
+                text: "Done",
+              )
             ],
           ),
         ));
