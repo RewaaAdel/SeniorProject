@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tester/Screens/Student/AttendancePageStudent.dart';
 import 'package:tester/Screens/Student/CoursePageStudent.dart';
 import 'package:tester/Screens/Student/QRCodePageStudent.dart';
+import 'package:tester/Screens/style.dart';
 
 class HomePageStudent extends StatelessWidget {
   @override
@@ -30,69 +31,26 @@ class HomePageStudent extends StatelessWidget {
             ),
             body: Center(
                 child: Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Align(alignment: Alignment.center),
                 Container(
                     margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                     child: Image.asset(
-                      'Assets/logowithnoname.png',
+                      'Assets/logopacity.png',
                       height: 200,
                     )),
-                //Cours button
-                Container(
-                    width: 250,
-                    height: 60,
-                    child: RaisedButton(
-                      color: Colors.grey[500],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(
-                        " Courses",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      onPressed: () {
-                        runApp(CoursPageStudent());
-                      },
-                    )),
-                Container(
-                  height: 16,
+                MenuButtons(
+                  label: "Courses",
                 ),
-                //QR Code button
-                Container(
-                    width: 250,
-                    height: 60,
-                    child: RaisedButton(
-                      color: Colors.grey[500],
-                      splashColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(
-                        " QR Code ",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      onPressed: () {
-                        runApp(QRCodePageStudent());
-                      },
-                    )),
-                Container(
-                  height: 16,
+                MenuButtons(
+                  label: "QR Code",
+                  //onpressed: runApp(QRCodePageStudent());,
                 ),
-                // Attendance report Button
-                Container(
-                    width: 250,
-                    height: 60,
-                    child: RaisedButton(
-                      color: Colors.grey[500],
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(
-                        " Attendance report ",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                      onPressed: () {
-                        runApp(AttendancePageStudent());
-                      },
-                    )),
+                MenuButtons(
+                  label: "Attendance Report",
+                ),
               ],
             ))));
   }

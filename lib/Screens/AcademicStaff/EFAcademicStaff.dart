@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Student/homePageStudent.dart';
+import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/style.dart';
 
-class QRCodePageStudent extends StatelessWidget {
+class EvaluationFormsAS extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
@@ -18,7 +18,7 @@ class QRCodePageStudent extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
-              "QR Code",
+              "Evaluation Forms",
               style: TextStyle(
                 fontSize: 30,
                 color: Color(0xFF525151),
@@ -27,25 +27,22 @@ class QRCodePageStudent extends StatelessWidget {
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                runApp(HomePageStudent());
+                runApp(homepageAS());
               },
               color: Color(0xFF525151),
               iconSize: 20,
               padding: EdgeInsets.only(left: 20),
             ),
           ),
-          body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Align(alignment: Alignment.center),
-            Container(
-                margin: EdgeInsets.only(bottom: 60),
-                child: Image.asset(''), //student qr code
-                width: 300,
-                height: 300,
-                color: Colors.grey[300]),
-            SubmitButtons(
-              text: "Download",
-            ),
-          ]),
+          body: ListView(
+            children: [
+              Align(alignment: Alignment.center),
+              CoursesButtons(label: "Infiltration", color: Colors.red),
+              CoursesButtons(label: "INAB", color: Color(0xFF98D1D4)),
+              CoursesButtons(label: "Suturing", color: Color(0xFF98D1D4)),
+              CoursesButtons(label: "Biopsy", color: Color(0xFF98D1D4))
+            ],
+          ),
         ));
   }
 }
