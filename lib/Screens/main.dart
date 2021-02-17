@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Student/homePageStudent.dart';
+import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -66,7 +66,12 @@ class MyApp extends StatelessWidget {
                   },
                 ),
               ),
-              SubmitButtons(text: "Sign In"),
+              SubmitButtons(
+                text: "Sign In",
+                onpressed: () {
+                  runApp(homePageAdministrator());
+                },
+              ),
               Container(
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

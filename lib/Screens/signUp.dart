@@ -1,7 +1,7 @@
 //import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/main.dart';
 import 'package:tester/Screens/style.dart';
 
@@ -58,7 +58,12 @@ class signUp extends StatelessWidget {
                   ),
                 ),
                 Text_Field(label: "Password", secure: true),
-                SubmitButtons(text: "Sign Up"),
+                SubmitButtons(
+                  text: "Sign Up",
+                  onpressed: () {
+                    runApp(homepageAS());
+                  },
+                ),
                 Container(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,

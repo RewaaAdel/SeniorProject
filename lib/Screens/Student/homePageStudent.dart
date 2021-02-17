@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/Administrator/SchedulesAdmin.dart';
 import 'package:tester/Screens/Student/AttendancePageStudent.dart';
 import 'package:tester/Screens/Student/CoursePageStudent.dart';
 import 'package:tester/Screens/Student/QRCodePageStudent.dart';
@@ -8,7 +9,6 @@ import 'package:tester/Screens/style.dart';
 class HomePageStudent extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
@@ -44,16 +44,27 @@ class HomePageStudent extends StatelessWidget with NavigationStates {
                     )),
                 MenuButtons(
                   label: "Courses",
+                  onpressed: () {
+                    runApp(CoursPageStudent());
+                  },
                 ),
                 MenuButtons(
                   label: "QR Code",
-                  //onpressed: runApp(QRCodePageStudent());,
+                  onpressed: () {
+                    runApp(QRCodePageStudent());
+                  },
                 ),
                 MenuButtons(
                   label: "Attendance Report",
+                  onpressed: () {
+                    runApp(AttendancePageStudent());
+                  },
                 ),
                 MenuButtons(
                   label: "Schedule",
+                  onpressed: () {
+                    runApp(SchedulesAdmin());
+                  },
                 ),
               ],
             ))));

@@ -90,6 +90,7 @@ class AttendancePageStudent extends StatelessWidget {
             //Back button
             SubmitButtons(
               text: "Download",
+              onpressed: () {},
             )
           ]),
         )));
