@@ -29,7 +29,20 @@ class SubmitButtons extends StatelessWidget {
         height: 40,
         margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
         alignment: Alignment.center,
-        child: RaisedButton(
+
+          color: Color(0xFF98D1D4),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(6))),
+          child: Text(
+            this.text,
+            style: TextStyle(color: Colors.white, fontSize: 15),
+            textAlign: TextAlign.center,
+          ),
+          onPressed: () {
+            runApp(homePageAdministrator());
+          },
+        ));
+
             color: Color(0xFF98D1D4),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(6))),
@@ -39,6 +52,7 @@ class SubmitButtons extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             onPressed: onpressed));
+
   }
 }
 
