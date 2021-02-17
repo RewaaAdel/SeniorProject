@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tester/Screens/Student/AttendancePageStudent.dart';
 import 'package:tester/Screens/Student/CoursePageStudent.dart';
 import 'package:tester/Screens/Student/QRCodePageStudent.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/style.dart';
 
-class HomePageStudent extends StatelessWidget {
+class HomePageStudent extends StatelessWidget with NavigationStates {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -50,6 +51,9 @@ class HomePageStudent extends StatelessWidget {
                 ),
                 MenuButtons(
                   label: "Attendance Report",
+                ),
+                MenuButtons(
+                  label: "Schedule",
                 ),
               ],
             ))));

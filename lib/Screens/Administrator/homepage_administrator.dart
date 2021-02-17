@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/CourseAdmin.dart';
+import 'package:tester/Screens/Sidebar/Sidebar_layout.dart';
 import 'package:tester/Screens/Student/CoursePageStudent.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 
 import 'package:tester/Screens/style.dart';
 
-class homePageAdministrator extends StatelessWidget {
+class homePageAdministrator extends StatelessWidget with NavigationStates {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,13 +20,6 @@ class homePageAdministrator extends StatelessWidget {
       home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.list),
-              onPressed: () {},
-              color: Colors.grey,
-              iconSize: 35,
-              padding: EdgeInsets.all(12),
-            ),
             backgroundColor: Colors.white,
             elevation: 0,
           ),

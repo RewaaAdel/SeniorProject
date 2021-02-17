@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AcademicStaff/EvaluationFormsAS.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/style.dart';
 
-class EvaluationFormsAS extends StatelessWidget {
+class FormsAS extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return FormsASState();
+  }
+}
+
+class FormsASState extends State<FormsAS> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,6 +25,7 @@ class EvaluationFormsAS extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
+              //take the name of the evalauation form from the database
               "Evaluation Forms",
               style: TextStyle(
                 fontSize: 30,
@@ -27,20 +35,25 @@ class EvaluationFormsAS extends StatelessWidget {
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                runApp(homepageAS());
+                runApp(EvaluationFormsAS());
               },
               color: Color(0xFF525151),
               iconSize: 20,
               padding: EdgeInsets.only(left: 20),
             ),
           ),
-          body: ListView(
+          body: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(alignment: Alignment.center),
-              CoursesButtons(label: "Infiltration", color: Colors.red),
-              CoursesButtons(label: "INAB", color: Color(0xFF98D1D4)),
-              CoursesButtons(label: "Suturing", color: Color(0xFF98D1D4)),
-              CoursesButtons(label: "Biopsy", color: Color(0xFF98D1D4))
+              Align(
+                alignment: Alignment.bottomCenter,
+              ),
+              SubmitButtons(
+                text: "Done",
+              ),
+              SubmitButtons(
+                text: "Edit",
+              )
             ],
           ),
         ));
