@@ -2,10 +2,13 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/AcademicStaff/CourseAS.dart';
-import 'package:tester/Screens/AcademicStaff/EFAcademicStaff.dart';
+import 'package:tester/Screens/AcademicStaff/EvaluationFormsAS.dart';
+import 'package:tester/Screens/AcademicStaff/ReportAS.dart';
+import 'package:tester/Screens/AcademicStaff/formsAS.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/Administrator/CourseAdmin.dart';
 import 'package:tester/Screens/Administrator/EFAdmin.dart';
+import 'package:tester/Screens/Administrator/Requests.dart';
 
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/Student/AttendancePageStudent.dart';
@@ -53,7 +56,7 @@ class SubmitButtons extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           onPressed: () {
-            runApp(Profile());
+            runApp(Requests());
           },
         ));
   }
@@ -89,7 +92,7 @@ class MenuButtons extends StatelessWidget {
 class CoursesButtons extends StatelessWidget {
   @override
   final String label;
-  final onpressed;
+  final Navigator onpressed;
   final Color color;
   const CoursesButtons({Key key, this.label, this.onpressed, this.color})
       : super(key: key);
@@ -108,7 +111,6 @@ class CoursesButtons extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           onPressed: () {
-            //this.onpressed;
             //runApp(this.onpressed);
           },
         ));

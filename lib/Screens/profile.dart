@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
-class Profile extends StatelessWidget {
+import 'bloc.navigation_bloc/navigation_bloc.dart';
+
+class Profile extends StatelessWidget with NavigationStates {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
