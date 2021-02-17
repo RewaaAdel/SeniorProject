@@ -44,6 +44,7 @@ class QRCodePageStudent extends StatelessWidget {
                 color: Colors.grey[300]),
             SubmitButtons(
               text: "Download",
+              onpressed: () {},
             ),
           ]),
         ));

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AcademicStaff/formsAS.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/style.dart';
 
@@ -37,10 +38,34 @@ class EvaluationFormsAS extends StatelessWidget {
           body: ListView(
             children: [
               Align(alignment: Alignment.center),
-              CoursesButtons(label: "Infiltration", color: Colors.red),
-              CoursesButtons(label: "INAB", color: Color(0xFF98D1D4)),
-              CoursesButtons(label: "Suturing", color: Color(0xFF98D1D4)),
-              CoursesButtons(label: "Biopsy", color: Color(0xFF98D1D4)),
+              CoursesButtons(
+                label: "Infiltration",
+                color: Colors.red,
+                onpressed: () {
+                  runApp(FormsAS());
+                },
+              ),
+              CoursesButtons(
+                label: "INAB",
+                color: Color(0xFF98D1D4),
+                onpressed: () {
+                  runApp(FormsAS());
+                },
+              ),
+              CoursesButtons(
+                label: "Suturing",
+                color: Color(0xFF98D1D4),
+                onpressed: () {
+                  runApp(FormsAS());
+                },
+              ),
+              CoursesButtons(
+                label: "Biopsy",
+                color: Color(0xFF98D1D4),
+                onpressed: () {
+                  runApp(FormsAS());
+                },
+              ),
               //تكملة الفورم من الداتا بيس
               Container(
                 child: Row(

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/AcademicStaff/CourseAS.dart';
+import 'package:tester/Screens/AcademicStaff/EvaluationFormsAS.dart';
+import 'package:tester/Screens/AcademicStaff/ReportAS.dart';
+import 'package:tester/Screens/AcademicStaff/ScanQR.dart';
 import 'package:tester/Screens/style.dart';
 
 class homepageAS extends StatelessWidget {
@@ -40,12 +43,21 @@ class homepageAS extends StatelessWidget {
               Align(alignment: Alignment.center),
               MenuButtons(
                 label: "Register Attendance",
+                onpressed: () {
+                  runApp(ScanQR());
+                },
               ),
               MenuButtons(
                 label: "Evaluation Forms",
+                onpressed: () {
+                  runApp(EvaluationFormsAS());
+                },
               ),
               MenuButtons(
                 label: "Courses Report",
+                onpressed: () {
+                  runApp(ReportAS());
+                },
               )
             ],
           ),

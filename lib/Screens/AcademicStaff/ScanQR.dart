@@ -25,7 +25,6 @@ class ScanQRState extends State<ScanQR> {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
-              //take the name of the evalauation form from the database
               "Scannnig..",
               style: TextStyle(
                 fontSize: 30,
@@ -35,7 +34,7 @@ class ScanQRState extends State<ScanQR> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                runApp(EvaluationFormsAS());
+                runApp(homepageAS());
               },
               color: Color(0xFF525151),
               iconSize: 20,

@@ -50,9 +50,11 @@ class FormsASState extends State<FormsAS> {
               ),
               SubmitButtons(
                 text: "Done",
+                onpressed: () {},
               ),
               SubmitButtons(
                 text: "Edit",
+                onpressed: () {},
               )
             ],
           ),
