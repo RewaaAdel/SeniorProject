@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AcademicStaff/EvaluationFormsAS.dart';
+import 'package:flutter/services.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
-import 'package:tester/Screens/style.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'dart:async';
+import 'package:flutter/services.dart';
 
 class ScanQR extends StatefulWidget {
   State<StatefulWidget> createState() {
@@ -11,6 +13,35 @@ class ScanQR extends StatefulWidget {
 }
 
 class ScanQRState extends State<ScanQR> {
+  String result = "";
+
+  Future _scanQR() async {
+    try {
+      String qrResult = (await BarcodeScanner.scan());
+      setState(() {
+        result = qrResult;
+      });
+    } on PlatformException catch (ex) {
+      if (ex.code == BarcodeScanner.CameraAccessDenied) {
+        setState(() {
+          result = "Camera permission was denied";
+        });
+      } else {
+        setState(() {
+          result = "Unknown Error $ex";
+        });
+      }
+    } on FormatException {
+      setState(() {
+        result = "You pressed the back button before scanning anything";
+      });
+    } catch (ex) {
+      setState(() {
+        result = "Unknown Error $ex";
+      });
+    }
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,7 +56,7 @@ class ScanQRState extends State<ScanQR> {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
-              "Scannnig..",
+              "Scanner",
               style: TextStyle(
                 fontSize: 30,
                 color: Color(0xFF525151),
@@ -41,7 +72,20 @@ class ScanQRState extends State<ScanQR> {
               padding: EdgeInsets.only(left: 20),
             ),
           ),
-          body: Container(),
+          body: Center(
+            child: Text(
+              result,
+              style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+            icon: Icon(Icons.camera_alt),
+            label: Text("Scan"),
+            onPressed: _scanQR,
+            backgroundColor: Color(0xFF98D1D4),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
         ));
   }
 }
