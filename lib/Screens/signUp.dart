@@ -61,7 +61,7 @@ class _SignUpState extends State<SignUp> {
         'Password': _passwordController.text
       };
       newUser.set(userMap);
-      newUser.once();
+      userMap.clear();
 
       runApp(SignIn());
     } else {
@@ -79,13 +79,12 @@ class _SignUpState extends State<SignUp> {
         ),
         home: Scaffold(
             backgroundColor: Colors.white,
-            body: Column(
-                key: _formkey,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+            body: ListView(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
+                    margin: EdgeInsets.fromLTRB(70, 30, 70, 70),
                     child: Image.asset(
                       'Assets/logowithname.png',
                       height: 200,
