@@ -21,11 +21,11 @@ class _SideBarState extends State<SideBar>
   @override
   void initState() {
     super.initState();
-    _animationController =
+    /*  _animationController =
         AnimationController(value: this, duration: _animationDuration);
     isSidebarOpenedStreamController = PublishSubject<bool>();
     isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
-    isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
+    isSidebarOpenedSink = isSidebarOpenedStreamController.sink;*/
   }
 
   @override
