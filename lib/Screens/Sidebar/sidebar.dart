@@ -22,7 +22,7 @@ class _SideBarState extends State<SideBar>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: _animationDuration);
+        AnimationController(value: this, duration: _animationDuration);
     isSidebarOpenedStreamController = PublishSubject<bool>();
     isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
     isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
