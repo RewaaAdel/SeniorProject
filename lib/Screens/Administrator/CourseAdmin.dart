@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
-class CourseAdmin extends StatelessWidget {
+class CourseAdmin extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return CourseAdminState();
+  }
+}
+
+class CourseAdminState extends State<CourseAdmin> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

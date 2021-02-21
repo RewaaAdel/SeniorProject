@@ -7,7 +7,13 @@ import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/Sidebar/Sidebar_layout.dart';
 import 'package:tester/Screens/style.dart';
 
-class homePageAdministrator extends StatelessWidget with NavigationStates {
+class homePageAdministrator extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return homePageAdministratorState();
+  }
+}
+
+class homePageAdministratorState extends State<homePageAdministrator> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

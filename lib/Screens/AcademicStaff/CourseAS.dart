@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/style.dart';
 
-class CourseAS extends StatelessWidget {
+class CourseAS extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return CourseASState();
+  }
+}
+
+class CourseASState extends State<CourseAS> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -16,6 +23,7 @@ class CourseAS extends StatelessWidget {
         home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            centerTitle: true,
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
               "Courses",
