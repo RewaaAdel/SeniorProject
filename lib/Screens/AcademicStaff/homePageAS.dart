@@ -6,7 +6,13 @@ import 'package:tester/Screens/AcademicStaff/ReportAS.dart';
 import 'package:tester/Screens/AcademicStaff/ScanQR.dart';
 import 'package:tester/Screens/style.dart';
 
-class homepageAS extends StatelessWidget {
+class homepageAS extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return homepageASState();
+  }
+}
+
+class homepageASState extends State<homepageAS> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

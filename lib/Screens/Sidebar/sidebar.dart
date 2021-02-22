@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import '../bloc.navigation_bloc/navigation_bloc.dart';
 import '../sidebar/menu_item.dart';
@@ -16,16 +16,16 @@ class _SideBarState extends State<SideBar>
   StreamController<bool> isSidebarOpenedStreamController;
   Stream<bool> isSidebarOpenedStream;
   StreamSink<bool> isSidebarOpenedSink;
-  final _animationDuration = const Duration(milliseconds: 300);
+  final _animationDuration = const Duration(milliseconds: 500);
 
   @override
   void initState() {
     super.initState();
-    /*  _animationController =
-        AnimationController(value: this, duration: _animationDuration);
+    _animationController =
+        AnimationController(vsync: this, duration: _animationDuration);
     isSidebarOpenedStreamController = PublishSubject<bool>();
     isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
-    isSidebarOpenedSink = isSidebarOpenedStreamController.sink;*/
+    isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
   }
 
   @override
@@ -68,7 +68,7 @@ class _SideBarState extends State<SideBar>
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  color: const Color(0xFF34A6AB),
+                  color: const Color(0xFF98D1D4),
                   child: Column(
                     children: <Widget>[
                       SizedBox(
@@ -79,7 +79,7 @@ class _SideBarState extends State<SideBar>
                           "Name",
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 26,
+                              fontSize: 30,
                               fontWeight: FontWeight.w800),
                         ),
                         subtitle: Text(
@@ -100,7 +100,7 @@ class _SideBarState extends State<SideBar>
                       Divider(
                         height: 64,
                         thickness: 0.5,
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withOpacity(0.5),
                         indent: 32,
                         endIndent: 32,
                       ),
@@ -115,7 +115,7 @@ class _SideBarState extends State<SideBar>
                       ),
                       MenuItem(
                         icon: Icons.person,
-                        title: "My profile",
+                        title: "My Profile",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context)
@@ -123,8 +123,8 @@ class _SideBarState extends State<SideBar>
                         },
                       ),
                       MenuItem(
-                        icon: Icons.archive_outlined,
-                        title: "Request",
+                        icon: Icons.archive,
+                        title: "Requests",
                         onTap: () {
                           onIconPressed();
                           BlocProvider.of<NavigationBloc>(context)
@@ -154,7 +154,7 @@ class _SideBarState extends State<SideBar>
                     child: Container(
                       width: 35,
                       height: 110,
-                      color: Color(0xFF34A6AB),
+                      color: Color(0xFF98D1D4),
                       alignment: Alignment.centerLeft,
                       child: AnimatedIcon(
                         progress: _animationController.view,

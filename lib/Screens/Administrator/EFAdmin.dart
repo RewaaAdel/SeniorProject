@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
-class EFAdmin extends StatelessWidget {
+class EFAdmin extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return EFAdminState();
+  }
+}
+
+class EFAdminState extends State<EFAdmin> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

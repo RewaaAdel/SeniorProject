@@ -1,11 +1,8 @@
 //import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/SignIn.dart';
@@ -21,8 +18,12 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String position;
+
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final _formkey = GlobalKey<FormState>();
+  static const String id = 'SignUp';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -41,9 +42,10 @@ class _SignUpState extends State<SignUp> {
     super.dispose();
   }
 
-  void registerUser() async {
-    var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+  void regester() async {
+    var user = FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
+
     if (result != null) {
       DatabaseReference newUser = FirebaseDatabase.instance
           .reference()
@@ -58,9 +60,12 @@ class _SignUpState extends State<SignUp> {
       };
       newUser.set(userMap);
 
-      runApp(SignIn());
+
+    if (user != null) {
+      print(user);
+      //runApp(homePageAdministrator());
     } else {
-      print('please try later');
+      print('Try ag');
     }
   }
 
@@ -90,7 +95,6 @@ class _SignUpState extends State<SignUp> {
                       height: 45,
                       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                       child: TextFormField(
-                        validator: (val) => val.isEmpty ? 'please ' : null,
                         controller: _nameController,
                         decoration: InputDecoration(
                           hintText: 'Name',
@@ -99,12 +103,18 @@ class _SignUpState extends State<SignUp> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4))),
                         ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please Fill Name Input';
+                          } else {
+                            return ' ';
+                          }
+                        },
                       )),
                   Container(
                       height: 45,
                       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 9),
                       child: TextFormField(
-                        validator: (val) => val.isEmpty ? 'please ' : null,
                         controller: _emailController,
                         decoration: InputDecoration(
                           hintText: 'Email',
@@ -113,12 +123,18 @@ class _SignUpState extends State<SignUp> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4))),
                         ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please Fill Email Input';
+                          } else {
+                            return ' ';
+                          }
+                        },
                       )),
                   Container(
                       height: 45,
                       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                       child: TextFormField(
-                        validator: (val) => val.length < 7 ? '6 please ' : null,
                         controller: _idController,
                         decoration: InputDecoration(
                           hintText: 'Id Number',
@@ -127,6 +143,13 @@ class _SignUpState extends State<SignUp> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4))),
                         ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please Fill Id Number Input';
+                          } else {
+                            return ' ';
+                          }
+                        },
                       )),
                   /* Text_Field(
                   controller: _nameController,
@@ -176,8 +199,6 @@ class _SignUpState extends State<SignUp> {
                       height: 45,
                       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                       child: TextFormField(
-                        validator: (val) => val.length < 8 ? 'please 8 ' : null,
-                        obscureText: true,
                         controller: _passwordController,
                         decoration: InputDecoration(
                           hintText: 'Password',
@@ -186,11 +207,23 @@ class _SignUpState extends State<SignUp> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(4))),
                         ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please Fill Password Input';
+                          } else {
+                            return ' ';
+                          }
+                        },
                       )),
                   SubmitButtons(
                     text: "Sign Up",
+
                     onpressed: () {
                       registerUser();
+
+                    onpressed: () async {
+                      regester();
+
                     },
                   ),
                   Container(
@@ -206,9 +239,22 @@ class _SignUpState extends State<SignUp> {
                         Container(
                             child: TextButton(
                                 child: Text("Sign in"),
+
                                 onPressed: () {
                                   registerUser();
                                   //runApp(SignIn());
+
+                                onPressed: () async {
+                                  var result = await FirebaseAuth.instance
+                                      .createUserWithEmailAndPassword(
+                                          email: _emailController.text,
+                                          password: _passwordController.text);
+                                  if (result != null) {
+                                    runApp(SignIn());
+                                  } else {
+                                    print('please try later');
+                                  }
+
                                 }))
                       ])),
                 ])));

@@ -4,7 +4,13 @@ import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
 import 'bloc.navigation_bloc/navigation_bloc.dart';
 
-class Profile extends StatelessWidget with NavigationStates {
+class Profile extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return ProfileState();
+  }
+}
+
+class ProfileState extends State<Profile> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

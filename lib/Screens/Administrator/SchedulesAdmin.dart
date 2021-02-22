@@ -2,7 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
-class SchedulesAdmin extends StatelessWidget {
+class SchedulesAdmin extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return SchedulesAdminState();
+  }
+}
+
+class SchedulesAdminState extends State<SchedulesAdmin> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
