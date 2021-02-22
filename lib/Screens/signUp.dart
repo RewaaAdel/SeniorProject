@@ -21,8 +21,6 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String position;
-  static const String id = 'SignUp';
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final _formkey = GlobalKey<FormState>();
   TextEditingController _nameController = TextEditingController();
@@ -30,7 +28,6 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _idController = TextEditingController();
   TextEditingController _positionController = TextEditingController();
-
   var Position = TextEditingController();
 
   @override
@@ -47,21 +44,19 @@ class _SignUpState extends State<SignUp> {
   void registerUser() async {
     var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
-    // final result = await _auth.createUserWithEmailAndPassword(
-    //  email: _emailController.text, password: _passwordController.text);
-
     if (result != null) {
-      DatabaseReference newUser =
-          FirebaseDatabase.instance.reference().child('Student');
+      DatabaseReference newUser = FirebaseDatabase.instance
+          .reference()
+          .child('user')
+          .child(FirebaseAuth.instance.currentUser.uid);
       Map userMap = {
-        'Name': _nameController.text,
-        'Email': _emailController.text,
-        'Id Number': _idController.text,
-        'Position': _positionController.text,
-        'Password': _passwordController.text
+        'fullName': _nameController.text,
+        'email': _emailController.text,
+        'idNumber': _idController.text,
+        'position': _positionController.text,
+        'password': _passwordController.text
       };
       newUser.set(userMap);
-      userMap.clear();
 
       runApp(SignIn());
     } else {
@@ -79,12 +74,13 @@ class _SignUpState extends State<SignUp> {
         ),
         home: Scaffold(
             backgroundColor: Colors.white,
-            body: ListView(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.center,
+            body: Column(
+                key: _formkey,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(70, 30, 70, 70),
+                    margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                     child: Image.asset(
                       'Assets/logowithname.png',
                       height: 200,
@@ -193,7 +189,9 @@ class _SignUpState extends State<SignUp> {
                       )),
                   SubmitButtons(
                     text: "Sign Up",
-                    onpressed: () {},
+                    onpressed: () {
+                      registerUser();
+                    },
                   ),
                   Container(
                       child: Row(
@@ -210,6 +208,7 @@ class _SignUpState extends State<SignUp> {
                                 child: Text("Sign in"),
                                 onPressed: () {
                                   registerUser();
+                                  //runApp(SignIn());
                                 }))
                       ])),
                 ])));

@@ -27,26 +27,12 @@ class SubmitButtons extends StatelessWidget {
   const SubmitButtons({Key key, this.text, this.onpressed}) : super(key: key);
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
-      height: 40,
-      margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
-      alignment: Alignment.center,
-      color: Color(0xFF98D1D4),
-      // shape: RoundedRectangleBorder(
-      //    borderRadius: BorderRadius.all(Radius.circular(6))
-      //  ),
-      child: Text(
-        this.text,
-        style: TextStyle(color: Colors.white, fontSize: 15),
-        textAlign: TextAlign.center,
-
-        //   onPressed: () {
-        //  runApp(homePageAdministrator());
-        //},
-      ),
-    );
-
-    /*    color: Color(0xFF98D1D4),
+        width: 150,
+        height: 40,
+        margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+        alignment: Alignment.center,
+        child: RaisedButton(
+            color: Color(0xFF98D1D4),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(6))),
             child: Text(
@@ -54,7 +40,7 @@ class SubmitButtons extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 15),
               textAlign: TextAlign.center,
             ),
-            onPressed: onpressed));*/
+            onPressed: onpressed));
   }
 }
 

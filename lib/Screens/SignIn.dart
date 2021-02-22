@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
@@ -109,10 +110,14 @@ class _SignInState extends State<SignIn> {
               Container(
                 child: TextButton(
                   child: Text("Forget my password"),
-                  onPressed: () {
-                    DatabaseReference def =
-                        FirebaseDatabase.instance.reference().child('Test');
-                    def.set('IsConnect');
+                  onPressed: () async {
+                    var user = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailController.text,
+                            password: _passwordController.text);
+
+                    print(user);
+                    runApp(homePageAdministrator());
                   },
                 ),
               ),
@@ -123,8 +128,7 @@ class _SignInState extends State<SignIn> {
                       .signInWithEmailAndPassword(
                           email: _emailController.text,
                           password: _passwordController.text);
-
-                  print(user);
+                  runApp(homePageAdministrator());
                 },
               ),
               Container(
