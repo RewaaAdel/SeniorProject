@@ -18,6 +18,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String position;
+
+  final FirebaseDatabase database = FirebaseDatabase.instance;
+  final _formkey = GlobalKey<FormState>();
   static const String id = 'SignUp';
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -26,7 +29,6 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _idController = TextEditingController();
   TextEditingController _positionController = TextEditingController();
-
   var Position = TextEditingController();
 
   @override
@@ -43,6 +45,21 @@ class _SignUpState extends State<SignUp> {
   void regester() async {
     var user = FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
+
+    if (result != null) {
+      DatabaseReference newUser = FirebaseDatabase.instance
+          .reference()
+          .child('user')
+          .child(FirebaseAuth.instance.currentUser.uid);
+      Map userMap = {
+        'fullName': _nameController.text,
+        'email': _emailController.text,
+        'idNumber': _idController.text,
+        'position': _positionController.text,
+        'password': _passwordController.text
+      };
+      newUser.set(userMap);
+
 
     if (user != null) {
       print(user);
@@ -62,12 +79,13 @@ class _SignUpState extends State<SignUp> {
         ),
         home: Scaffold(
             backgroundColor: Colors.white,
-            body: ListView(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                // crossAxisAlignment: CrossAxisAlignment.center,
+            body: Column(
+                key: _formkey,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.fromLTRB(70, 30, 70, 70),
+                    margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                     child: Image.asset(
                       'Assets/logowithname.png',
                       height: 200,
@@ -199,8 +217,13 @@ class _SignUpState extends State<SignUp> {
                       )),
                   SubmitButtons(
                     text: "Sign Up",
+
+                    onpressed: () {
+                      registerUser();
+
                     onpressed: () async {
                       regester();
+
                     },
                   ),
                   Container(
@@ -216,6 +239,11 @@ class _SignUpState extends State<SignUp> {
                         Container(
                             child: TextButton(
                                 child: Text("Sign in"),
+
+                                onPressed: () {
+                                  registerUser();
+                                  //runApp(SignIn());
+
                                 onPressed: () async {
                                   var result = await FirebaseAuth.instance
                                       .createUserWithEmailAndPassword(
@@ -226,6 +254,7 @@ class _SignUpState extends State<SignUp> {
                                   } else {
                                     print('please try later');
                                   }
+
                                 }))
                       ])),
                 ])));
