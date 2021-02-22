@@ -31,6 +31,7 @@ class CourseAdminState extends State<CourseAdmin> {
     };
     newCourse.set(courseMap);
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

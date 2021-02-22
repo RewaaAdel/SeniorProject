@@ -1,12 +1,9 @@
 //import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/SignIn.dart';
-import 'package:tester/Screens/main.dart';
 import 'package:tester/Screens/style.dart';
 
 class SignUp extends StatefulWidget {
@@ -21,9 +18,6 @@ class _SignUpState extends State<SignUp> {
 
   final FirebaseDatabase database = FirebaseDatabase.instance;
   final _formkey = GlobalKey<FormState>();
-  static const String id = 'SignUp';
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -46,7 +40,7 @@ class _SignUpState extends State<SignUp> {
     var user = FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
 
-    if (result != null) {
+    if (user != null) {
       DatabaseReference newUser = FirebaseDatabase.instance
           .reference()
           .child('user')
@@ -60,12 +54,11 @@ class _SignUpState extends State<SignUp> {
       };
       newUser.set(userMap);
 
-
-    if (user != null) {
-      print(user);
-      //runApp(homePageAdministrator());
-    } else {
-      print('Try ag');
+      if (user != null) {
+        runApp(SignIn());
+      } else {
+        print('Try ag');
+      }
     }
   }
 
@@ -199,6 +192,7 @@ class _SignUpState extends State<SignUp> {
                       height: 45,
                       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                       child: TextFormField(
+                        obscureText: true,
                         controller: _passwordController,
                         decoration: InputDecoration(
                           hintText: 'Password',
@@ -216,16 +210,10 @@ class _SignUpState extends State<SignUp> {
                         },
                       )),
                   SubmitButtons(
-                    text: "Sign Up",
-
-                    onpressed: () {
-                      registerUser();
-
-                    onpressed: () async {
-                      regester();
-
-                    },
-                  ),
+                      text: "Sign Up",
+                      onpressed: () {
+                        regester();
+                      }),
                   Container(
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -239,24 +227,11 @@ class _SignUpState extends State<SignUp> {
                         Container(
                             child: TextButton(
                                 child: Text("Sign in"),
-
                                 onPressed: () {
-                                  registerUser();
+                                  regester();
                                   //runApp(SignIn());
-
-                                onPressed: () async {
-                                  var result = await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(
-                                          email: _emailController.text,
-                                          password: _passwordController.text);
-                                  if (result != null) {
-                                    runApp(SignIn());
-                                  } else {
-                                    print('please try later');
-                                  }
-
                                 }))
-                      ])),
+                      ]))
                 ])));
   }
 }
