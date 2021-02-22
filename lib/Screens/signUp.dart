@@ -72,79 +72,75 @@ class _SignUpState extends State<SignUp> {
         ),
         home: Scaffold(
             backgroundColor: Colors.white,
-            body: Column(
-                key: _formkey,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
-                    child: Image.asset(
-                      'Assets/logowithname.png',
-                      height: 200,
+            body: ListView(key: _formkey, children: [
+              Align(
+                alignment: Alignment.center,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 70, 0, 35),
+                child: Image.asset(
+                  'Assets/Checkpoint.png',
+                  height: 100,
+                ),
+              ),
+              Container(
+                  height: 45,
+                  margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
+                  child: TextFormField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      hintText: 'Name',
+                      labelText: 'Name',
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
                     ),
-                  ),
-                  Container(
-                      height: 45,
-                      margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
-                      child: TextFormField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          hintText: 'Name',
-                          labelText: 'Name',
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4))),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Fill Name Input';
-                          } else {
-                            return ' ';
-                          }
-                        },
-                      )),
-                  Container(
-                      height: 45,
-                      margin: EdgeInsets.symmetric(horizontal: 70, vertical: 9),
-                      child: TextFormField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          hintText: 'Email',
-                          labelText: 'Email',
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4))),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Fill Email Input';
-                          } else {
-                            return ' ';
-                          }
-                        },
-                      )),
-                  Container(
-                      height: 45,
-                      margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
-                      child: TextFormField(
-                        controller: _idController,
-                        decoration: InputDecoration(
-                          hintText: 'Id Number',
-                          labelText: 'Id Number',
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4))),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Fill Id Number Input';
-                          } else {
-                            return ' ';
-                          }
-                        },
-                      )),
-                  /* Text_Field(
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please Fill Name Input';
+                      } else {
+                        return ' ';
+                      }
+                    },
+                  )),
+              Container(
+                  height: 45,
+                  margin: EdgeInsets.symmetric(horizontal: 70, vertical: 9),
+                  child: TextFormField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      hintText: 'Email',
+                      labelText: 'Email',
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please Fill Email Input';
+                      } else {
+                        return ' ';
+                      }
+                    },
+                  )),
+              Container(
+                  height: 45,
+                  margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
+                  child: TextFormField(
+                    controller: _idController,
+                    decoration: InputDecoration(
+                      hintText: 'Id Number',
+                      labelText: 'Id Number',
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please Fill Id Number Input';
+                      } else {
+                        return ' ';
+                      }
+                    },
+                  )),
+              /* Text_Field(
                   controller: _nameController,
                   label: "Name",
                   secure: false,
@@ -157,81 +153,80 @@ class _SignUpState extends State<SignUp> {
                     controller: _idController,
                     label: "Id Number",
                     secure: false), */
-                  Container(
-                    height: 45,
-                    margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
-                    // padding: EdgeInsets.only(left: 10, right: 10),
-                    //margin: EdgeInsets.only(bottom: 10),
-                    //  width: 300,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(4)),
-                    child: DropdownButton(
-                      isExpanded: true,
-                      hint: Text("  Position"),
-                      value: position,
-                      onChanged: (value) {
-                        setState(() {
-                          _idController = value;
-                        });
-                      },
-                      items: ['Academic Staff', 'Student'].map((value) {
-                        return new DropdownMenuItem(
-                            value: value,
-                            child: Text(
-                              value,
-                            ));
-                      }).toList(),
-                    ),
-                  ),
-                  /* Text_Field(
+              Container(
+                height: 45,
+                margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
+                // padding: EdgeInsets.only(left: 10, right: 10),
+                //margin: EdgeInsets.only(bottom: 10),
+                //  width: 300,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(4)),
+                child: DropdownButton(
+                  isExpanded: true,
+                  hint: Text("  Position"),
+                  value: position,
+                  onChanged: (value) {
+                    setState(() {
+                      _idController = value;
+                    });
+                  },
+                  items: ['Academic Staff', 'Student'].map((value) {
+                    return new DropdownMenuItem(
+                        value: value,
+                        child: Text(
+                          value,
+                        ));
+                  }).toList(),
+                ),
+              ),
+              /* Text_Field(
                     controller: _passwordController,
                     label: "Password",
                     secure: true), */
-                  Container(
-                      height: 45,
-                      margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
-                      child: TextFormField(
-                        obscureText: true,
-                        controller: _passwordController,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          labelText: 'Password',
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(4))),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please Fill Password Input';
-                          } else {
-                            return ' ';
-                          }
-                        },
-                      )),
-                  SubmitButtons(
-                      text: "Sign Up",
-                      onpressed: () {
-                        regester();
-                      }),
-                  Container(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                        Container(
-                          child: Text(
-                            "Already have an account?",
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                        ),
-                        Container(
-                            child: TextButton(
-                                child: Text("Sign in"),
-                                onPressed: () {
-                                  regester();
-                                  //runApp(SignIn());
-                                }))
-                      ]))
-                ])));
+              Container(
+                  height: 45,
+                  margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
+                  child: TextFormField(
+                    obscureText: true,
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      labelText: 'Password',
+                      border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please Fill Password Input';
+                      } else {
+                        return ' ';
+                      }
+                    },
+                  )),
+              SubmitButtons(
+                  text: "Sign Up",
+                  onpressed: () {
+                    regester();
+                  }),
+              Container(
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Container(
+                      child: Text(
+                        "Already have an account?",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    Container(
+                        child: TextButton(
+                            child: Text("Sign in"),
+                            onPressed: () {
+                              regester();
+                              //runApp(SignIn());
+                            }))
+                  ]))
+            ])));
   }
 }

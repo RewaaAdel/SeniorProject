@@ -6,7 +6,13 @@ import 'package:tester/Screens/Student/QRCodePageStudent.dart';
 import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/style.dart';
 
-class HomePageStudent extends StatelessWidget with NavigationStates {
+class HomePageStudent extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return HomePageStudentState();
+  }
+}
+
+class HomePageStudentState extends State<HomePageStudent> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,8 +45,8 @@ class HomePageStudent extends StatelessWidget with NavigationStates {
                 Container(
                     margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                     child: Image.asset(
-                      'Assets/logopacity.png',
-                      height: 200,
+                      'Assets/CheckpointOpacity.png',
+                      height: 100,
                     )),
                 MenuButtons(
                   label: "Courses",

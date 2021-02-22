@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
 
 class ScanQR extends StatefulWidget {
   State<StatefulWidget> createState() {
