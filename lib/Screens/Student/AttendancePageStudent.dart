@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/Student/homePageStudent.dart';
 import 'package:tester/Screens/style.dart';
 
-class AttendancePageStudent extends StatelessWidget {
+class AttendancePageStudent extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return AttendancePageStudentState();
+  }
+}
+
+class AttendancePageStudentState extends State<AttendancePageStudent> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AcademicStaff/EvaluationFormsAS.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
-import 'package:tester/Screens/style.dart';
 
 class ReportAS extends StatefulWidget with NavigationStates {
   State<StatefulWidget> createState() {

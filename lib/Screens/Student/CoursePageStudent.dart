@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/Student/homePageStudent.dart';
 
-class CoursPageStudent extends StatelessWidget {
+class CoursPageStudent extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return CoursPageStudentState();
+  }
+}
+
+class CoursPageStudentState extends State<CoursPageStudent> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

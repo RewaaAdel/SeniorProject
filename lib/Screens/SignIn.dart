@@ -1,13 +1,8 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'dart:io' show Platform;
-import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -51,10 +46,10 @@ class _SignInState extends State<SignIn> {
             children: [
               Align(alignment: Alignment.center),
               Container(
-                margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
+                margin: EdgeInsets.fromLTRB(0, 70, 0, 35),
                 child: Image.asset(
-                  'Assets/logowithname.png',
-                  height: 200,
+                  'Assets/Checkpoint.png',
+                  height: 100,
                 ),
               ),
               /* Text_Field(

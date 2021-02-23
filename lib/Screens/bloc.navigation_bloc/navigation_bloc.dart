@@ -29,13 +29,20 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   }
 
   */
-  NavigationStates get initialState => CourseAS();
+  NavigationStates get initialState => homePageAdministrator();
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
     switch (event) {
       case NavigationEvents.HomePageClickedEvent:
-        yield homePageAdministrator();
+        /* if (user == "administrator") {
+          yield homePageAdministrator();
+        } else if (user == "AcademicStaff") {
+          yield CourseAS();
+        } else {
+          yield HomePageStudent();
+        }
+        */
         break;
       case NavigationEvents.MyProfileClickedEvent:
         yield Profile();
