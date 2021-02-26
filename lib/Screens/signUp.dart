@@ -1,4 +1,3 @@
-//import 'dart:html';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,8 +21,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _idController = TextEditingController();
-  TextEditingController _positionController = TextEditingController();
-  var Position = TextEditingController();
+  // TextEditingController _positionController = TextEditingController();
 
   @override
   void dispose() {
@@ -31,35 +29,9 @@ class _SignUpState extends State<SignUp> {
     _emailController.dispose();
     _passwordController.dispose();
     _idController.dispose();
-    _positionController.dispose();
+    // _positionController.dispose();
 
     super.dispose();
-  }
-
-  void regester() async {
-    var user = FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text, password: _passwordController.text);
-
-    if (user != null) {
-      DatabaseReference newUser = FirebaseDatabase.instance
-          .reference()
-          .child('user')
-          .child(FirebaseAuth.instance.currentUser.uid);
-      Map userMap = {
-        'fullName': _nameController.text,
-        'email': _emailController.text,
-        'idNumber': _idController.text,
-        'position': _positionController.text,
-        'password': _passwordController.text
-      };
-      newUser.set(userMap);
-
-      if (user != null) {
-        runApp(SignIn());
-      } else {
-        print('Try ag');
-      }
-    }
   }
 
   @override
@@ -162,16 +134,17 @@ class _SignUpState extends State<SignUp> {
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(4)),
-                child: DropdownButton(
+                child: DropdownButtonFormField(
                   isExpanded: true,
                   hint: Text("  Position"),
                   value: position,
                   onChanged: (value) {
                     setState(() {
-                      _idController = value;
+                      position = value;
+                      // _positionController = value;
                     });
                   },
-                  items: ['Academic Staff', 'Student'].map((value) {
+                  items: ['  Academic Staff', '  Student'].map((value) {
                     return new DropdownMenuItem(
                         value: value,
                         child: Text(
@@ -207,7 +180,7 @@ class _SignUpState extends State<SignUp> {
               SubmitButtons(
                   text: "Sign Up",
                   onpressed: () {
-                    regester();
+                    signUpProcess();
                   }),
               Container(
                   child: Row(
@@ -223,10 +196,34 @@ class _SignUpState extends State<SignUp> {
                         child: TextButton(
                             child: Text("Sign in"),
                             onPressed: () {
-                              regester();
-                              //runApp(SignIn());
+                              runApp(SignIn());
                             }))
                   ]))
             ])));
+  }
+
+  void signUpProcess() async {
+    var user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text, password: _passwordController.text);
+
+    if (user != null) {
+      DatabaseReference newUser =
+          FirebaseDatabase.instance.reference().child('user');
+      // .child(FirebaseAuth.instance.currentUser.uid);
+      Map userMap = {
+        'fullName': _nameController.text,
+        'email': _emailController.text,
+        'idNumber': _idController.text,
+        'position': position,
+        //_positionController.text,
+        'password': _passwordController.text
+      };
+      if (user != null) {
+        newUser.push().set(userMap);
+        runApp(SignIn());
+      }
+    } else {
+      print('Try ag');
+    }
   }
 }

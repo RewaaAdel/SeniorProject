@@ -24,9 +24,7 @@ class _SignInState extends State<SignIn> {
   @override
   void dispose() {
     _emailController.dispose();
-
     _passwordController.dispose();
-
     super.dispose();
   }
 
@@ -105,25 +103,13 @@ class _SignInState extends State<SignIn> {
               Container(
                 child: TextButton(
                   child: Text("Forget my password"),
-                  onPressed: () async {
-                    var user = await FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: _emailController.text,
-                            password: _passwordController.text);
-
-                    print(user);
-                    runApp(homePageAdministrator());
-                  },
+                  onPressed: () {},
                 ),
               ),
               SubmitButtons(
                 text: "Sign In",
-                onpressed: () async {
-                  var user = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text);
-                  runApp(homePageAdministrator());
+                onpressed: () {
+                  signInProcess();
                 },
               ),
               Container(
@@ -147,5 +133,11 @@ class _SignInState extends State<SignIn> {
             ],
           ))),
     );
+  }
+
+  void signInProcess() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text, password: _passwordController.text);
+    runApp(homePageAdministrator());
   }
 }
