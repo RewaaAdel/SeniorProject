@@ -207,10 +207,40 @@ class _SignUpState extends State<SignUp> {
         email: _emailController.text, password: _passwordController.text);
 
     if (user != null) {
-      DatabaseReference newUser =
-          FirebaseDatabase.instance.reference().child('user');
+      //  DatabaseReference newUser =
+      //   FirebaseDatabase.instance.reference().child('user');
       // .child(FirebaseAuth.instance.currentUser.uid);
-      Map userMap = {
+      if (position == '  Student') {
+        DatabaseReference newUser = FirebaseDatabase.instance
+            .reference()
+            .child('user')
+            .child('student');
+        Map userMap = {
+          'fullName': _nameController.text,
+          'email': _emailController.text,
+          'idNumber': _idController.text,
+          'position': position,
+          //_positionController.text,
+          'password': _passwordController.text
+        };
+        newUser.push().set(userMap);
+        runApp(SignIn());
+      } else if (position == '  Academic Staff') {
+        DatabaseReference newUser = FirebaseDatabase.instance
+            .reference()
+            .child('user')
+            .child('academicStaff');
+        Map userMap = {
+          'fullName': _nameController.text,
+          'email': _emailController.text,
+          'idNumber': _idController.text,
+          'position': position,
+          //_positionController.text,
+          'password': _passwordController.text
+        };
+        newUser.push().set(userMap);
+        runApp(SignIn());
+        /* Map userMap = {
         'fullName': _nameController.text,
         'email': _emailController.text,
         'idNumber': _idController.text,
@@ -221,9 +251,10 @@ class _SignUpState extends State<SignUp> {
       if (user != null) {
         newUser.push().set(userMap);
         runApp(SignIn());
+      }*/
+      } else {
+        print('Try ag');
       }
-    } else {
-      print('Try ag');
     }
   }
 }
