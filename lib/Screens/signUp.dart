@@ -104,13 +104,6 @@ class _SignUpState extends State<SignUp> {
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                     ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please Fill Id Number Input';
-                      } else {
-                        return ' ';
-                      }
-                    },
                   )),
               /* Text_Field(
                   controller: _nameController,
