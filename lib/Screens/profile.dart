@@ -1,165 +1,89 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 
-import 'bloc.navigation_bloc/navigation_bloc.dart';
+class Profile extends StatefulWidget with NavigationStates {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
 
-class Profile extends StatelessWidget with NavigationStates {
-  // This widget is the root of your application.
+class _ProfileState extends State<Profile> {
+  bool showPassword = false;
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: ListView(
+            children: [
+              SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 130,
+                      height: 130,
+                      margin: EdgeInsets.only(top: 20),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(width: 4, color: Color(0xFF98D1D4)),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.1),
+                                offset: Offset(0, 10))
+                          ],
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                'Assets/ProfilePicture.png',
+                              ))),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              buildTextField("Full Name", "Dor Alex"),
+              buildTextField("Id", "1234567"),
+              buildTextField("E-mail", "alexd@gmail.com"),
+              buildTextField("Position", "Administarator"),
+              SizedBox(
+                height: 35,
+              ),
+            ],
+          ),
         ),
-        home: Scaffold(
-            backgroundColor: Colors.white,
-            appBar: AppBar(
-              backgroundColor: Color(0xFFD9D9D9),
-              title: Text(
-                "Profile",
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Color(0xFF525151),
-                ),
-              ),
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  runApp(homePageAdministrator());
-                },
-                color: Color(0xFF525151),
-                iconSize: 20,
-                padding: EdgeInsets.only(left: 20),
-              ),
-            ),
-            body: ListView(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              //crossAxisAlignment: CrossAxisAlignment.center,
+      ),
+    );
+  }
 
-              children: [
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 99,
-                        child: Text(
-                          "Name",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 10, 20, 10),
-                        margin: EdgeInsets.only(right: 20),
-                        color: Color(0xFF98D1D4),
-                      ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Ahmad Mohammed",
-                          style:
-                              TextStyle(color: Color(0xFF525151), fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(20, 10, 5, 10),
-                        color: Color(0xFFD9D9D9),
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.only(bottom: 20),
-                ),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 99,
-                        child: Text(
-                          "Id",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 10, 20, 10),
-                        margin: EdgeInsets.only(right: 20),
-                        color: Color(0xFF98D1D4),
-                      ),
-                      Container(
-                        child: Text(
-                          "1234567",
-                          style:
-                              TextStyle(color: Color(0xFF525151), fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(20, 10, 5, 10),
-                        color: Color(0xFFD9D9D9),
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.only(bottom: 20),
-                ),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 99,
-                        child: Text(
-                          "Position",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 10, 20, 10),
-                        margin: EdgeInsets.only(right: 20),
-                        color: Color(0xFF98D1D4),
-                      ),
-                      Container(
-                        child: Text(
-                          "Administrator",
-                          style:
-                              TextStyle(color: Color(0xFF525151), fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(20, 10, 5, 10),
-                        color: Color(0xFFD9D9D9),
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.only(bottom: 20),
-                ),
-                Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 99,
-                        child: Text(
-                          "Email",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(5, 10, 20, 10),
-                        margin: EdgeInsets.only(right: 20),
-                        color: Color(0xFF98D1D4),
-                      ),
-                      Container(
-                        child: Text(
-                          "AhmadMohammed@gmail.com",
-                          style:
-                              TextStyle(color: Color(0xFF525151), fontSize: 20),
-                        ),
-                        padding: EdgeInsets.fromLTRB(20, 10, 5, 10),
-                        color: Color(0xFFD9D9D9),
-                      )
-                    ],
-                  ),
-                  margin: EdgeInsets.only(bottom: 20),
-                ),
-                Container(
-                    width: 150,
-                    height: 40,
-                    margin: EdgeInsets.fromLTRB(0, 40, 0, 15),
-                    child: RaisedButton(
-                      color: Color(0xFF98D1D4),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(6))),
-                      child: Text(
-                        " Edif",
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                      ),
-                      onPressed: () {},
-                    )),
-              ],
-            )));
+  Widget buildTextField(String labelText, String placeholder) {
+    return Container(
+      margin: EdgeInsets.only(left: 30, right: 30),
+      padding: const EdgeInsets.only(bottom: 35.0),
+      child: TextField(
+        readOnly: true,
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.only(bottom: 3),
+            labelText: labelText,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: placeholder,
+            hintStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            )),
+      ),
+    );
   }
 }

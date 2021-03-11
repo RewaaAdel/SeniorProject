@@ -1,14 +1,9 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/SignIn.dart';
-import 'package:tester/Screens/signUp.dart';
-import 'package:tester/Screens/style.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:io' show Platform;
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

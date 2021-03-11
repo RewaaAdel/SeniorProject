@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:tester/Screens/Student/homePageStudent.dart';
 import 'package:tester/Screens/style.dart';
 
-class QRCodePageStudent extends StatelessWidget {
+class QRCodePageStudent extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return QRCodePageStudentState();
+  }
+}
+
+class QRCodePageStudentState extends State<QRCodePageStudent> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

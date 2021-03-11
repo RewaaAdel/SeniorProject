@@ -4,7 +4,13 @@ import 'package:tester/Screens/AcademicStaff/formsAS.dart';
 import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
 import 'package:tester/Screens/style.dart';
 
-class EvaluationFormsAS extends StatelessWidget {
+class EvaluationFormsAS extends StatefulWidget {
+  State<StatefulWidget> createState() {
+    return EvaluationFormsASState();
+  }
+}
+
+class EvaluationFormsASState extends State<EvaluationFormsAS> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

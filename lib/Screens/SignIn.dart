@@ -1,12 +1,8 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'dart:io' show Platform;
-import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
@@ -28,9 +24,7 @@ class _SignInState extends State<SignIn> {
   @override
   void dispose() {
     _emailController.dispose();
-
     _passwordController.dispose();
-
     super.dispose();
   }
 
@@ -50,10 +44,10 @@ class _SignInState extends State<SignIn> {
             children: [
               Align(alignment: Alignment.center),
               Container(
-                margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
+                margin: EdgeInsets.fromLTRB(0, 70, 0, 35),
                 child: Image.asset(
-                  'Assets/logowithname.png',
-                  height: 200,
+                  'Assets/Checkpoint.png',
+                  height: 100,
                 ),
               ),
               /* Text_Field(
@@ -109,22 +103,13 @@ class _SignInState extends State<SignIn> {
               Container(
                 child: TextButton(
                   child: Text("Forget my password"),
-                  onPressed: () {
-                    DatabaseReference def =
-                        FirebaseDatabase.instance.reference().child('Test');
-                    def.set('IsConnect');
-                  },
+                  onPressed: () {},
                 ),
               ),
               SubmitButtons(
                 text: "Sign In",
-                onpressed: () async {
-                  var user = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text);
-
-                  print(user);
+                onpressed: () {
+                  signInProcess();
                 },
               ),
               Container(
@@ -148,5 +133,12 @@ class _SignInState extends State<SignIn> {
             ],
           ))),
     );
+  }
+
+  void signInProcess() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text, password: _passwordController.text);
+
+    runApp(homePageAdministrator());
   }
 }

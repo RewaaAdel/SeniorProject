@@ -4,10 +4,15 @@ import 'package:tester/Screens/Administrator/CourseAdmin.dart';
 import 'package:tester/Screens/Administrator/EFAdmin.dart';
 import 'package:tester/Screens/Administrator/SchedulesAdmin.dart';
 import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
-import 'package:tester/Screens/Sidebar/Sidebar_layout.dart';
 import 'package:tester/Screens/style.dart';
 
-class homePageAdministrator extends StatelessWidget with NavigationStates {
+class homePageAdministrator extends StatefulWidget with NavigationStates {
+  State<StatefulWidget> createState() {
+    return homePageAdministratorState();
+  }
+}
+
+class homePageAdministratorState extends State<homePageAdministrator> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -28,8 +33,8 @@ class homePageAdministrator extends StatelessWidget with NavigationStates {
             Container(
               margin: EdgeInsets.only(bottom: 70),
               child: Image.asset(
-                'Assets/logopacity.png',
-                height: 150,
+                'Assets/CheckpointOpacity.png',
+                height: 100,
               ),
             ),
             MenuButtons(
