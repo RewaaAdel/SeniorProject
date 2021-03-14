@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 
-class SchedulesAdmin extends StatefulWidget {
+class SchedulesAdmin extends StatefulWidget with NavigationStates {
   State<StatefulWidget> createState() {
     return SchedulesAdminState();
   }
