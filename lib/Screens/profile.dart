@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/Sidebar/sidebar_layout.dart';
 import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
+import 'package:tester/Screens/style.dart';
 
 class Profile extends StatefulWidget with NavigationStates {
   @override
@@ -8,10 +10,10 @@ class Profile extends StatefulWidget with NavigationStates {
 }
 
 class _ProfileState extends State<Profile> {
-  bool showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideBarLayout(),
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
@@ -59,6 +61,14 @@ class _ProfileState extends State<Profile> {
               buildTextField("Position", "Administarator"),
               SizedBox(
                 height: 35,
+              ),
+              SubmitButtons(
+                text: "Add another admin",
+                onpressed: () {},
+              ),
+              SubmitButtons(
+                text: "Save",
+                onpressed: () {},
               ),
             ],
           ),

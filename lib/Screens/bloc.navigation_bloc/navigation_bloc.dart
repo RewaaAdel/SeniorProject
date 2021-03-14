@@ -1,15 +1,14 @@
 import 'package:bloc/bloc.dart';
-import 'package:tester/Screens/AcademicStaff/CourseAS.dart';
-import 'package:tester/Screens/AcademicStaff/ReportAS.dart';
 import 'package:tester/Screens/Administrator/Requests.dart';
+import 'package:tester/Screens/Administrator/SchedulesAdmin.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
-import 'package:tester/Screens/Student/homePageStudent.dart';
 import 'package:tester/Screens/profile.dart';
 
 enum NavigationEvents {
   HomePageClickedEvent,
   MyProfileClickedEvent,
   RequestClickedEvent,
+  ScheduleClickedEvent,
   SettingsClickedEvent,
   LogoutClickedEvent
 }
@@ -55,6 +54,9 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
         break;
       case NavigationEvents.LogoutClickedEvent:
         // TODO: Handle this case.
+        break;
+      case NavigationEvents.ScheduleClickedEvent:
+        yield SchedulesAdmin();
         break;
     }
   }

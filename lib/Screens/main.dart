@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/Administrator/Requests.dart';
+import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/Sidebar/sidebar_layout.dart';
 import 'package:tester/Screens/SignIn.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:io' show Platform;
 import 'dart:async';
+
+import 'package:tester/Screens/profile.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

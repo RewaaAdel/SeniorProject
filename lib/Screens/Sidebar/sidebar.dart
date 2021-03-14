@@ -132,6 +132,15 @@ class _SideBarState extends State<SideBar>
                         },
                       ),
                       MenuItem(
+                        icon: Icons.table_chart_sharp,
+                        title: "Schedule",
+                        onTap: () {
+                          onIconPressed();
+                          BlocProvider.of<NavigationBloc>(context)
+                              .add(NavigationEvents.ScheduleClickedEvent);
+                        },
+                      ),
+                      MenuItem(
                         icon: Icons.settings,
                         title: "Settings",
                       ),
