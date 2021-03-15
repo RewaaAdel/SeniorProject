@@ -1,100 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/AcademicStaff/formsAS.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/Administrator/CourseAdmin.dart';
 import 'package:tester/Screens/Sidebar/sidebar_layout.dart';
+import 'package:tester/Screens/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:tester/Screens/style.dart';
 
-class EFAdmin extends StatefulWidget {
-  State<StatefulWidget> createState() {
-    return EFAdminState();
-  }
-}
-
-class EFAdminState extends State<EFAdmin> {
-  // This widget is the root of your application.
+class CourseInfo extends StatefulWidget with NavigationStates {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Color(0xFFD9D9D9),
-            title: Text(
-              "Evaluation Forms",
-              style: TextStyle(
-                fontSize: 30,
-                color: Color(0xFF525151),
-              ),
-            ),
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                runApp(homePageAdministrator());
-              },
-              color: Color(0xFF525151),
-              iconSize: 20,
-              padding: EdgeInsets.only(left: 20),
-            ),
-          ),
-          body: ListView(
-            children: [
-              Align(alignment: Alignment.center),
-              SizedBox(height: 40),
-              CoursesButtons(
-                label: "Infiltration",
-                color: Color(0xFF98D1D4),
-                onpressed: () {
-                  runApp(EvaluationFormInfo());
-                },
-              ),
-              CoursesButtons(
-                label: "INAB",
-                color: Color(0xFF98D1D4),
-                onpressed: () {
-                  runApp(EvaluationFormInfo());
-                },
-              ),
-              CoursesButtons(
-                label: "Suturing",
-                color: Color(0xFF98D1D4),
-                onpressed: () {
-                  runApp(EvaluationFormInfo());
-                },
-              ),
-              CoursesButtons(
-                label: "Biopsy",
-                color: Color(0xFF98D1D4),
-                onpressed: () {
-                  runApp(EvaluationFormInfo());
-                },
-              ),
-
-              //تكملة الفورم من الداتا بيس
-
-              SizedBox(
-                height: 20,
-              ),
-              SubmitButtons(text: "Add New Evaluation Form", onpressed: () {}),
-            ],
-          ),
-        ));
-  }
+  _CourseInfoState createState() => _CourseInfoState();
 }
 
-class EvaluationFormInfo extends StatefulWidget {
-  State<StatefulWidget> createState() {
-    return EvaluationFormInfoState();
-  }
-}
-
-class EvaluationFormInfoState extends State<EvaluationFormInfo> {
-  // This widget is the root of your application.
+class _CourseInfoState extends State<CourseInfo> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -103,7 +19,7 @@ class EvaluationFormInfoState extends State<EvaluationFormInfo> {
           appBar: AppBar(
             backgroundColor: Color(0xFFD9D9D9),
             title: Text(
-              "Evaluation Forms",
+              "Courses",
               style: TextStyle(
                 fontSize: 30,
                 color: Color(0xFF525151),
@@ -112,7 +28,7 @@ class EvaluationFormInfoState extends State<EvaluationFormInfo> {
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
               onPressed: () {
-                runApp(EFAdmin());
+                runApp(CourseAdmin());
               },
               color: Color(0xFF525151),
               iconSize: 20,
@@ -136,7 +52,7 @@ class EvaluationFormInfoState extends State<EvaluationFormInfo> {
                       children: [
                         Container(
                           child: Text(
-                            "Name of the form",
+                            "OMR 312",
                             style: TextStyle(
                                 fontSize: 30,
                                 color: Color(0xFF98D1D4),
@@ -174,7 +90,7 @@ class EvaluationFormInfoState extends State<EvaluationFormInfo> {
                         onpressed: () {},
                       ),
                       SubmitButtons(
-                        text: "Delete this form",
+                        text: "Delete this course",
                         onpressed: () {},
                       ),
                     ],

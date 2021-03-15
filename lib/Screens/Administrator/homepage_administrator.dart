@@ -28,7 +28,7 @@ class homePageAdministratorState extends State<homePageAdministrator> {
             backgroundColor: Colors.white,
             elevation: 0,
           ),
-          body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          body: ListView(children: [
             Align(alignment: Alignment.center),
             Container(
               margin: EdgeInsets.only(bottom: 70),
