@@ -39,8 +39,7 @@ class _SignInState extends State<SignIn> {
       home: Scaffold(
           backgroundColor: Colors.white,
           body: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+              child: ListView(
             children: [
               Align(alignment: Alignment.center),
               Container(
@@ -49,6 +48,9 @@ class _SignInState extends State<SignIn> {
                   'Assets/Checkpoint.png',
                   height: 100,
                 ),
+              ),
+              SizedBox(
+                height: 50,
               ),
               /* Text_Field(
                   controller: _emailController,
@@ -94,7 +96,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please Fill Password Input';
+                        return Text('Please Fill Password Input').toString();
                       } else {
                         return ' ';
                       }

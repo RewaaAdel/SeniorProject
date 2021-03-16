@@ -53,7 +53,7 @@ class MenuButtons extends StatelessWidget {
     return Container(
         width: 300,
         height: 75,
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+        margin: EdgeInsets.fromLTRB(50, 15, 35, 15),
         child: RaisedButton(
             color: Color(0xFF98D1D4),
             shape: RoundedRectangleBorder(
@@ -78,7 +78,7 @@ class CoursesButtons extends StatelessWidget {
     return Container(
         width: 300,
         height: 75,
-        margin: EdgeInsets.fromLTRB(0, 15, 0, 15),
+        margin: EdgeInsets.fromLTRB(50, 15, 35, 15),
         child: RaisedButton(
             color: this.color,
             shape: RoundedRectangleBorder(

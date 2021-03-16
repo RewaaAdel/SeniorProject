@@ -1,6 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
+import 'package:tester/Screens/Administrator/CourseInfo.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
 import '../style.dart';
@@ -51,13 +53,42 @@ class CourseAdminState extends State<CourseAdmin> {
               Align(
                 alignment: Alignment.center,
               ),
+              SizedBox(
+                height: 20,
+              ),
+              CoursesButtons(
+                label: "OMR 312",
+                color: Color(0xFF92D050),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "OMR 511",
+                color: Color(0xFFC697F6),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "OMR 611",
+                color: Color(0xFFB4C6E7),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "SURD 401",
+                color: Color(0xFFF6CAAC),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
               SubmitButtons(
                   text: "Add Course",
-                  onpressed: () {
-                    runApp(AddCourse());
-                  }),
-              SubmitButtons(
-                  text: "Update",
                   onpressed: () {
                     runApp(AddCourse());
                   }),
@@ -122,6 +153,31 @@ class _AddCourseState extends State<AddCourse> {
             ),
             //-----------------------------------------------------------
             body: ListView(key: _formkey, children: [
+              SizedBox(
+                height: 15,
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              buildTextField("Course code", ""),
+              buildTextField("Course name", ""),
+              buildTextField("Year", ""),
+              buildTextField("Semester", ""),
+              buildTextField("Crediet hours", ""),
+              buildTextField("Practical", ""),
+              buildTextField("Evaluation form MPE", ""),
+              buildTextField("No.", ""),
+              buildTextField("Exam form CE", ""),
+              SizedBox(
+                height: 35,
+              ),
+              SubmitButtons(
+                text: "Save",
+                onpressed: () {},
+              ),
+              SizedBox(
+                height: 35,
+              ),
               Align(
                 alignment: Alignment.center,
               ),
@@ -203,4 +259,25 @@ class _AddCourseState extends State<AddCourse> {
         .child('course')
         .orderByChild('name');
   }
+}
+
+Widget buildTextField(String labelText, String placeholder) {
+  return Container(
+    margin: EdgeInsets.only(left: 30, right: 30),
+    padding: const EdgeInsets.only(bottom: 35.0),
+    child: TextField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(bottom: 3),
+          labelText: labelText,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          hintText: placeholder,
+          hintStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          )),
+    ),
+  );
 }
