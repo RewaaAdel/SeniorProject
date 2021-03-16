@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/AcademicStaff/homePageAS.dart';
+import 'package:tester/Screens/Administrator/CourseInfo.dart';
 import 'package:tester/Screens/Administrator/homepage_administrator.dart';
 
 import '../style.dart';
@@ -48,6 +50,40 @@ class CourseAdminState extends State<CourseAdmin> {
             body: ListView(key: _formkey, children: [
               Align(
                 alignment: Alignment.center,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              CoursesButtons(
+                label: "OMR 312",
+                color: Color(0xFF92D050),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "OMR 511",
+                color: Color(0xFFC697F6),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "OMR 611",
+                color: Color(0xFFB4C6E7),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              CoursesButtons(
+                label: "SURD 401",
+                color: Color(0xFFF6CAAC),
+                onpressed: () {
+                  runApp(CourseInfo());
+                },
+              ),
+              SizedBox(
+                height: 20,
               ),
               SubmitButtons(
                   text: "Add Course",

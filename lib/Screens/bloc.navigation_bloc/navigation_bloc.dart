@@ -42,6 +42,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
           yield HomePageStudent();
         }
         */
+        yield homePageAdministrator();
         break;
       case NavigationEvents.MyProfileClickedEvent:
         yield Profile();

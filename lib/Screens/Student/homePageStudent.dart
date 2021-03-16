@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/Administrator/SchedulesAdmin.dart';
+import 'package:tester/Screens/Sidebar/sidebar_layout.dart';
 import 'package:tester/Screens/Student/AttendancePageStudent.dart';
 import 'package:tester/Screens/Student/CoursePageStudent.dart';
 import 'package:tester/Screens/Student/QRCodePageStudent.dart';
@@ -23,25 +24,13 @@ class HomePageStudentState extends State<HomePageStudent> {
         ),
         home: Scaffold(
             backgroundColor: Colors.white,
-            appBar: AppBar(
-              actions: [
-                IconButton(
-                  icon: Icon(Icons.list),
-                  onPressed: () {},
-                  color: Colors.grey,
-                  iconSize: 35,
-                  padding: EdgeInsets.all(12),
-                ),
-              ],
-              backgroundColor: Colors.white,
-              elevation: 0,
-            ),
             body: Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+                child: ListView(
               children: [
                 Align(alignment: Alignment.center),
+                SizedBox(
+                  height: 50,
+                ),
                 Container(
                     margin: EdgeInsets.fromLTRB(70, 0, 70, 70),
                     child: Image.asset(
@@ -64,12 +53,6 @@ class HomePageStudentState extends State<HomePageStudent> {
                   label: "Attendance Report",
                   onpressed: () {
                     runApp(AttendancePageStudent());
-                  },
-                ),
-                MenuButtons(
-                  label: "Schedule",
-                  onpressed: () {
-                    runApp(SchedulesAdmin());
                   },
                 ),
               ],

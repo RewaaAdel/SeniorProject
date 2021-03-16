@@ -49,7 +49,7 @@ class QRCodePageStudentState extends State<QRCodePageStudent> {
                 height: 300,
                 color: Colors.grey[300]),
             SubmitButtons(
-              text: "Download",
+              text: "Download Image",
               onpressed: () {},
             ),
           ]),

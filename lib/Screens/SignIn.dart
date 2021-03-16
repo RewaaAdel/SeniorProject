@@ -33,8 +33,7 @@ class _SignInState extends State<SignIn> {
       home: Scaffold(
           backgroundColor: Colors.white,
           body: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+              child: ListView(
             children: [
               Align(alignment: Alignment.center),
               Container(
@@ -84,7 +83,7 @@ class _SignInState extends State<SignIn> {
                     },
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please Fill Password Input';
+                        return Text('Please Fill Password Input').toString();
                       } else {
                         return ' ';
                       }
