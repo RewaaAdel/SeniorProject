@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/services/auth.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key key}) : super(key: key);
@@ -17,16 +16,11 @@ class _SignInState extends State<SignIn> {
     super.initState();
   }
 
+  final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +44,9 @@ class _SignInState extends State<SignIn> {
                   height: 100,
                 ),
               ),
-              /* Text_Field(
-                  controller: _emailController,
-                  label: "Email or Id",
-                  secure: false),
-              Text_Field(
-                  controller: _passwordController,
-                  label: "Password",
-                  secure: true),*/
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 40),
                 child: TextFormField(
-                  controller: _emailController,
                   obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Email',
@@ -69,6 +54,9 @@ class _SignInState extends State<SignIn> {
                     border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
+                  onChanged: (val) {
+                    setState(() => email = val);
+                  },
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please Fill Email Input';
@@ -84,7 +72,6 @@ class _SignInState extends State<SignIn> {
               Container(
                   margin: EdgeInsets.symmetric(horizontal: 40),
                   child: TextFormField(
-                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: 'Password',
@@ -92,6 +79,9 @@ class _SignInState extends State<SignIn> {
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
+                    onChanged: (val) {
+                      setState(() => password = val);
+                    },
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'Please Fill Password Input';
@@ -108,8 +98,8 @@ class _SignInState extends State<SignIn> {
               ),
               SubmitButtons(
                 text: "Sign In",
-                onpressed: () {
-                  signInProcess();
+                onpressed: () async {
+                  print(email);
                 },
               ),
               Container(
@@ -133,12 +123,5 @@ class _SignInState extends State<SignIn> {
             ],
           ))),
     );
-  }
-
-  void signInProcess() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text, password: _passwordController.text);
-
-    runApp(homePageAdministrator());
   }
 }

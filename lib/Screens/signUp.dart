@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tester/Screens/SignIn.dart';
+import 'package:tester/Screens/services/auth.dart';
 import 'package:tester/Screens/style.dart';
 
 class SignUp extends StatefulWidget {
@@ -13,26 +12,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String position;
-
-  final FirebaseDatabase database = FirebaseDatabase.instance;
+  final AuthService _auth = AuthService();
   final _formkey = GlobalKey<FormState>();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _idController = TextEditingController();
-  // TextEditingController _positionController = TextEditingController();
 
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    _idController.dispose();
-    // _positionController.dispose();
-
-    super.dispose();
-  }
+  String name = '';
+  String id = '';
+  String email = '';
+  String password = '';
+  String position = '';
 
   @override
   Widget build(BuildContext context) {
@@ -55,75 +42,57 @@ class _SignUpState extends State<SignUp> {
                   height: 100,
                 ),
               ),
+//................................ Name Container.....................................
               Container(
                   height: 45,
                   margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                   child: TextFormField(
-                    controller: _nameController,
-                    decoration: InputDecoration(
-                      hintText: 'Name',
-                      labelText: 'Name',
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4))),
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please Fill Name Input';
-                      } else {
-                        return ' ';
-                      }
-                    },
-                  )),
+                      decoration: InputDecoration(
+                        hintText: 'Name',
+                        labelText: 'Name',
+                        border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(4))),
+                      ),
+                      onChanged: (val) {
+                        setState(() => name = val);
+                      },
+                      validator: (value) =>
+                          value.isEmpty ? 'Enter a Full Name Please' : null)),
+//................................ Email Container.....................................
               Container(
                   height: 45,
                   margin: EdgeInsets.symmetric(horizontal: 70, vertical: 9),
                   child: TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      labelText: 'Email',
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(4))),
-                    ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please Fill Email Input';
-                      } else {
-                        return ' ';
-                      }
-                    },
-                  )),
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        labelText: 'Email',
+                        border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(4))),
+                      ),
+                      onChanged: (val) {
+                        setState(() => email = val);
+                      },
+                      validator: (value) =>
+                          value.isEmpty ? 'Enter the Email Please' : null)),
+              //................................ Id Number Container.....................................
               Container(
                   height: 45,
                   margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                   child: TextFormField(
-                    controller: _idController,
                     decoration: InputDecoration(
                       hintText: 'Id Number',
                       labelText: 'Id Number',
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                     ),
+                    onChanged: (val) {
+                      setState(() => id = val);
+                    },
                   )),
-              /* Text_Field(
-                  controller: _nameController,
-                  label: "Name",
-                  secure: false,
-                ),
-                Text_Field(
-                    controller: _emailController,
-                    label: "Email",
-                    secure: false),
-                Text_Field(
-                    controller: _idController,
-                    label: "Id Number",
-                    secure: false), */
+//................................ Position Container.....................................
               Container(
                 height: 45,
                 margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
-                // padding: EdgeInsets.only(left: 10, right: 10),
-                //margin: EdgeInsets.only(bottom: 10),
-                //  width: 300,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(4)),
@@ -131,10 +100,11 @@ class _SignUpState extends State<SignUp> {
                   isExpanded: true,
                   hint: Text("  Position"),
                   value: position,
+                  validator: (value) =>
+                      value.isEmpty ? 'Choose the Position Please' : null,
                   onChanged: (value) {
                     setState(() {
                       position = value;
-                      // _positionController = value;
                     });
                   },
                   items: ['  Academic Staff', '  Student'].map((value) {
@@ -146,34 +116,31 @@ class _SignUpState extends State<SignUp> {
                   }).toList(),
                 ),
               ),
-              /* Text_Field(
-                    controller: _passwordController,
-                    label: "Password",
-                    secure: true), */
+//................................ Password Container.....................................
               Container(
                   height: 45,
                   margin: EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                   child: TextFormField(
                     obscureText: true,
-                    controller: _passwordController,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       labelText: 'Password',
                       border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(4))),
                     ),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please Fill Password Input';
-                      } else {
-                        return ' ';
-                      }
+                    validator: (value) => value.length < 6
+                        ? 'Enter a password with 6+ Please'
+                        : null,
+                    onChanged: (val) {
+                      setState(() => password = val);
                     },
                   )),
               SubmitButtons(
                   text: "Sign Up",
                   onpressed: () {
-                    signUpProcess();
+                    if (_formkey.currentState.validate()) {
+                      runApp(SignIn());
+                    }
                   }),
               Container(
                   child: Row(
@@ -193,61 +160,5 @@ class _SignUpState extends State<SignUp> {
                             }))
                   ]))
             ])));
-  }
-
-  void signUpProcess() async {
-    var user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text, password: _passwordController.text);
-
-    if (user != null) {
-      //  DatabaseReference newUser =
-      //   FirebaseDatabase.instance.reference().child('user');
-      // .child(FirebaseAuth.instance.currentUser.uid);
-      if (position == '  Student') {
-        DatabaseReference newUser = FirebaseDatabase.instance
-            .reference()
-            .child('user')
-            .child('student');
-        Map userMap = {
-          'fullName': _nameController.text,
-          'email': _emailController.text,
-          'idNumber': _idController.text,
-          'position': position,
-          //_positionController.text,
-          'password': _passwordController.text
-        };
-        newUser.push().set(userMap);
-        runApp(SignIn());
-      } else if (position == '  Academic Staff') {
-        DatabaseReference newUser = FirebaseDatabase.instance
-            .reference()
-            .child('user')
-            .child('academicStaff');
-        Map userMap = {
-          'fullName': _nameController.text,
-          'email': _emailController.text,
-          'idNumber': _idController.text,
-          'position': position,
-          //_positionController.text,
-          'password': _passwordController.text
-        };
-        newUser.push().set(userMap);
-        runApp(SignIn());
-        /* Map userMap = {
-        'fullName': _nameController.text,
-        'email': _emailController.text,
-        'idNumber': _idController.text,
-        'position': position,
-        //_positionController.text,
-        'password': _passwordController.text
-      };
-      if (user != null) {
-        newUser.push().set(userMap);
-        runApp(SignIn());
-      }*/
-      } else {
-        print('Try ag');
-      }
-    }
   }
 }
