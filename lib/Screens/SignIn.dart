@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tester/Screens/Administrator/homepage_administrator.dart';
+import 'package:tester/Screens/model/student.dart';
 import 'package:tester/Screens/services/auth.dart';
 import 'package:tester/Screens/signUp.dart';
 import 'package:tester/Screens/style.dart';
@@ -21,6 +23,7 @@ class _SignInState extends State<SignIn> {
 
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class _SignInState extends State<SignIn> {
           backgroundColor: Colors.white,
           body: Center(
               child: ListView(
+            key: _formkey,
             children: [
               Align(alignment: Alignment.center),
               Container(
@@ -44,27 +48,21 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 40),
-                child: TextFormField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                    labelText: 'Email',
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                  onChanged: (val) {
-                    setState(() => email = val);
-                  },
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Fill Email Input';
-                    } else {
-                      return ' ';
-                    }
-                  },
-                ),
-              ),
+                  margin: EdgeInsets.symmetric(horizontal: 40),
+                  child: TextFormField(
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        labelText: 'Email',
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                      ),
+                      onChanged: (val) {
+                        setState(() => email = val);
+                      },
+                      validator: (value) =>
+                          value.isEmpty ? 'Enter the Email Please' : null)),
               SizedBox(
                 height: 20,
               ),
@@ -81,13 +79,9 @@ class _SignInState extends State<SignIn> {
                     onChanged: (val) {
                       setState(() => password = val);
                     },
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return Text('Please Fill Password Input').toString();
-                      } else {
-                        return ' ';
-                      }
-                    },
+                    validator: (value) => value.length < 6
+                        ? 'Enter a password with 6+ Please'
+                        : null,
                   )),
               Container(
                 child: TextButton(
@@ -96,10 +90,28 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               SubmitButtons(
-                text: "Sign In",
-                onpressed: () async {
-                  print(email);
-                },
+                  text: "Sign In",
+                  onpressed: () async {
+                    if (_formkey.currentState.validate()) {
+                      dynamic result =
+                          await _auth.SignInProcess(email, password);
+
+                      if (result == null) {
+                        setState(() => error = 'Check Your Input Agean');
+                        
+                      } else {
+                        runApp(homePageAdministrator());
+                      }
+                    }
+                  }),
+              Container(
+                child: SizedBox(
+                  height: 12,
+                  child: Text(
+                    error,
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
               ),
               Container(
                   child: Row(

@@ -32,7 +32,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   barcode_scan: ^1.0.0
   cloud_firestore: ^0.12.11 
-  provider: ^5.0.0
+  provider: ^3.2.0
 
 dev_dependencies:
   flutter_test:

@@ -20,6 +20,7 @@ class _SignUpState extends State<SignUp> {
   String email = '';
   String password = '';
   String position = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +138,26 @@ class _SignUpState extends State<SignUp> {
                   )),
               SubmitButtons(
                   text: "Sign Up",
-                  onpressed: () {
+                  onpressed: () async {
                     if (_formkey.currentState.validate()) {
-                      runApp(SignIn());
+                      dynamic result =
+                          await _auth.registerProcess(email, password);
+                      if (result == null) {
+                        setState(() => error = 'Check Your Input Agean');
+                      } else {
+                        runApp(SignIn());
+                      }
                     }
                   }),
+                  Container(
+                    child: SizedBox(
+                      height: 12,
+                      child: Text(
+                        error,
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    ),
+                  ),
               Container(
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

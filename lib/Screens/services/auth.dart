@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tester/Screens/model/student.dart';
+import 'package:tester/Screens/services/api.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,6 +19,34 @@ class AuthService {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser user = result.user;
+      return _userFromFire(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  //Sign in
+  Future SignInProcess(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      return _userFromFire(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  // Register With email and password
+  Future registerProcess(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      await Api(uid: user.uid).updateUserData('name', 'email', 'password', 0);
+
       return _userFromFire(user);
     } catch (e) {
       print(e.toString());
